@@ -27,6 +27,7 @@ ncols <- ncol(early_january_weather)
 nrows <- nrow(early_january_weather)
 ncols;nrows
 ```
+
 ```{r}
 # Mean Temperature
 temp_mean <- mean(early_january_weather$temp)
@@ -39,6 +40,16 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp)) +
 ```
 Question 2
 ```{r}
+#Set the random seed for reproducibility
+set.seed(1234)
 
+#Creating Dataframe
+data <- tibble(
+  vec_numeric <- rnorm(10, mean = 0, sd = 1),
+  vec_char <- c("My","Name","is","Yiquan","Zhou","This","is","P8105","first","Homework"),
+  vec_logical <- vec_numeric > 0,
+)
+data
+  
 ```
 
