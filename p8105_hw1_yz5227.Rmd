@@ -9,17 +9,18 @@ library(tidyverse)
 library(ggridges)
 library(moderndive)
 ```
-
+Question 1
 ```{r}
 #Load Dataset
 data("early_january_weather")
+#View the data neater way 
+skimr::skim(early_january_weather)
 ```
-Question 1
 ```{r}
 #Variable names
 Var_name <- names(early_january_weather)
 Var_name
-skimr::skim(early_january_weather)
+
 ```
 ```{r}
 #Dataset size
@@ -44,14 +45,31 @@ Question 2
 set.seed(1234)
 
 #Creating Dataframe
-data <- tibble(
-  vec_numeric = rnorm(10, mean = 0, sd = 1),
-  vec_char = c("My","Name","is","Yiquan","Zhou","This","is","P8105","first","Homework"),
-  vec_logical = vec_numeric > 0,
+dataframe <- tibble(
+  vec_numeric = rnorm(10, mean = 0, sd = 1),#a random sample of size 10 from a standard Normal distribution
+  vec_char = c("My","Name","is","Yiquan","Zhou","This","is","P8105","first","Homework"),#a logical vector if vec_numeric is larger than 0
+  vec_logical = vec_numeric > 0,#a character vector of length 10
+  vec_factor = factor(c("A","C","B","A","A","B","C","A","B","C"))#factor vector with 3 different factor levels
 )
-data
-
-
-  
+dataframe
 ```
+```{r}
+#Mean for all variables
+numeric_mean <- mean(dataframe %>% pull(vec_numeric))
+numeric_mean 
+char_mean <- mean(dataframe %>% pull(vec_char))
+char_mean
+logical_mean <- mean(dataframe %>% pull(vec_logical))
+logical_mean
+factor_mean <- mean(dataframe %>% pull(vec_factor))
+factor_mean
+```
+```{r, results='hide'}
+#Convert to numerical variable for all columns
+as.numeric(dataframe %>% pull(vec_numeric))
+as.numeric(dataframe %>% pull(vec_char))
+as.numeric(dataframe %>% pull(vec_logical))
+as.numeric(dataframe %>% pull(vec_factor))
+```
+
 
