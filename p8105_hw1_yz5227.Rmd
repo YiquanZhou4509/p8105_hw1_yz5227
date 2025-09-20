@@ -36,6 +36,6 @@ temp_mean
 ```{r}
 #ggplot scatterplot
 ggplot(early_january_weather, aes(x = time_hour, y = temp)) + 
-  geom_point()
+  geom_point(aes(color = humid))
 ```
 
