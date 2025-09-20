@@ -7,20 +7,19 @@ output: html_document
 #Load Package 
 library(tidyverse)
 library(ggridges)
+library(moderndive)
 ```
 
 ```{r}
 #Load Dataset
-library(moderndive)
 data("early_january_weather")
-view(early_january_weather)
-?early_january_weather
 ```
 Question 1
 ```{r}
 #Variable names
 Var_name <- names(early_january_weather)
 Var_name
+skimr::skim(early_january_weather)
 ```
 ```{r}
 #Dataset size
@@ -37,5 +36,9 @@ temp_mean
 #ggplot scatterplot
 ggplot(early_january_weather, aes(x = time_hour, y = temp)) + 
   geom_point(aes(color = humid))
+```
+Question 2
+```{r}
+
 ```
 
