@@ -45,11 +45,13 @@ set.seed(1234)
 
 #Creating Dataframe
 data <- tibble(
-  vec_numeric <- rnorm(10, mean = 0, sd = 1),
-  vec_char <- c("My","Name","is","Yiquan","Zhou","This","is","P8105","first","Homework"),
-  vec_logical <- vec_numeric > 0,
+  vec_numeric = rnorm(10, mean = 0, sd = 1),
+  vec_char = c("My","Name","is","Yiquan","Zhou","This","is","P8105","first","Homework"),
+  vec_logical = vec_numeric > 0,
 )
 data
+
+
   
 ```
 
