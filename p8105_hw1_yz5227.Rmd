@@ -3,3 +3,16 @@ title: "p8105_hw1_yz5227"
 output: html_document
 ---
 
+```{r}
+#Load Package 
+
+
+```
+
+```{r}
+#Load Dataset
+library(moderndive)
+data("early_january_weather")
+early_january_weather
+```
+
