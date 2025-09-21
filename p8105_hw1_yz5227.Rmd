@@ -9,7 +9,7 @@ library(tidyverse)
 library(ggridges)
 library(moderndive)
 ```
-Question 1
+# Question 1
 ```{r}
 #Load Dataset
 data("early_january_weather")
@@ -20,20 +20,21 @@ skimr::skim(early_january_weather)
 #Variable names
 Var_name <- names(early_january_weather)
 Var_name
-
 ```
+The above output shows the 15 variable names while "origin" is character variable, "time_hour" is a POSIXct contains data and time information, and the other variables are all numerical variables. Note that there are no missing values for "temp" and "humid". 
 ```{r}
 #Dataset size
 ncols <- ncol(early_january_weather)
 nrows <- nrow(early_january_weather)
 ncols;nrows
 ```
-
+The dataset size is 15 x 358
 ```{r}
 # Mean Temperature
 temp_mean <- mean(early_january_weather$temp)
 temp_mean
 ```
+The mean temperature is approximately 39.58
 ```{r}
 #ggplot scatterplot
 scatterplot_temp_humid <- ggplot(early_january_weather, aes(x = time_hour, y = temp)) + 
@@ -42,7 +43,9 @@ scatterplot_temp_humid
 #ggsave the plot
 ggsave("scatterplot_weather.pdf", scatterplot_temp_humid, width = 8, height = 5)
 ```
-Question 2
+The Scatter plot of temperature and humid level by date and time indicates an overall trend of increasing temperature with a fluctuation of rising and then falling. Note that there is a significant fall of temperature at the end. Humidity tend to be higher when temperature rises and lower with temperature drops, however further analysis needed to prove. 
+
+# Question 2
 ```{r}
 #Set the random seed for reproducibility
 set.seed(1234)
@@ -67,12 +70,16 @@ logical_mean
 factor_mean <- mean(dataframe %>% pull(vec_factor))
 factor_mean
 ```
+The vec_numeric is numerical variable from random sampling seed of normal distribution, hence it has an exact mean of -0.38.
+The vec_char is character variable, which returns NA values.
+The vec_logical is logical variable with boolean values, hence it has a mean.
+The vec_factor is a factor variable, however it is meaningless to calculate the mean, which returns NA value.
+
 ```{r, results='hide'}
 #Convert to numerical variable for all columns
-as.numeric(dataframe %>% pull(vec_numeric))
 as.numeric(dataframe %>% pull(vec_char))
 as.numeric(dataframe %>% pull(vec_logical))
 as.numeric(dataframe %>% pull(vec_factor))
 ```
-
+After as.numeric function performed, the vec_char returns NA values, which is consistent with mean results, since character strings could not be converted to numerical variable. The logical variable returns 0 (False) and 1 (True) representing the boolean values, which has a mean. The vec_facter returns 1 (A), 3(C), 2(B) representing factor level in numerical way instead of the original "A", "B", "C". However, although it could be converted, it is meaningless to calculate the mean, hence the mean is NA. 
 
